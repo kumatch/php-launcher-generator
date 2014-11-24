@@ -23,6 +23,10 @@
     "require-dev": {
         "phpunit/phpunit": "3.*"
     },
+    "bin": [
+        "bin/launcher-generator",
+        "bin/launcher-generator.php"
+    ],
     "autoload": {
         "psr-4": {
             "Kumatch\\Launcher\\": "src/"
