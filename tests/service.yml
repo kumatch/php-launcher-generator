@@ -1,0 +1,10 @@
+parameters:
+
+services:
+  test_date:
+    class: DateTime
+
+  FooBar:
+    class: Path\To\Test\FooBar
+    arguments:
+      - "@test_date"

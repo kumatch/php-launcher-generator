@@ -1,0 +1,3 @@
+#!/bin/bash
+
+../bin/launcher-generator -c MyLauncher -n Path\\To\\MyApp -t method ./service.yml > ./MyLauncher.php

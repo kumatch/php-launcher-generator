@@ -1,0 +1,21 @@
+<?php
+{% if namespace %}
+namespace {{namespace}};
+{% endif %}
+use Kumatch\MethodLauncher as MethodLauncher{{id}};
+
+/**
+{% for name, serviceClass in services %}
+ * @method {{serviceClass}} launch{{name}}
+{% endfor %}
+ */
+class {{class}} extends MethodLauncher{{id}}
+{
+    public function __construct()
+    {
+        $this->container = unserialize(<<<CONTAINER_{{id}}
+{{container|raw}}
+CONTAINER_{{id}}
+        );
+    }
+}
