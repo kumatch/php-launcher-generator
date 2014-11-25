@@ -3,7 +3,7 @@ use Commando\Command;
 use Kumatch\Launcher\Generator;
 use Kumatch\Launcher\GeneratingParameter;
 
-include_once __DIR__ . '/../vendor/autoload.php';
+(@include_once __DIR__ . '/../vendor/autoload.php') || @include_once __DIR__ . '/../../../autoload.php';
 
 $command = new Command();
 
