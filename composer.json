@@ -21,7 +21,8 @@
         "nategood/commando": "~0.2.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.*"
+        "phpunit/phpunit": "3.*",
+        "feedtailor/mocking-method-invoker": "~0.1"
     },
     "bin": [
         "bin/launcher-generator",

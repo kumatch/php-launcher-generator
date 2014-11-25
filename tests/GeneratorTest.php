@@ -4,6 +4,7 @@ namespace Kumatch\Launcher\Generator\Test;
 
 use Kumatch\Launcher\Generator;
 use Kumatch\Launcher\GeneratingParameter;
+use Feedtailor\Mocking\MethodInvoker;
 
 class GeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,10 +43,12 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
             ->setClassName($className)
             ->setNamespace($namespace);
 
-        /** @var Generator $generator */
         $generator = new Generator($param);
+        $container = MethodInvoker::create($generator)->invoke("createContainer", array($filename));
 
-        $this->assertEquals($result, $generator->generatePropertyLauncher());
+        $launcherCode = $generator->generatePropertyLauncher();
+
+        $this->assertEquals(str_replace("__SERIALIZED_CONTAINER__", serialize($container), $result), $launcherCode);
     }
 
     public function provideMethodLauncherGeneratingParams()
@@ -73,9 +76,11 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
             ->setClassName($className)
             ->setNamespace($namespace);
 
-        /** @var Generator $generator */
         $generator = new Generator($param);
+        $container = MethodInvoker::create($generator)->invoke("createContainer", array($filename));
 
-        $this->assertEquals($result, $generator->generateMethodLauncher());
+        $launcherCode = $generator->generateMethodLauncher();
+
+        $this->assertEquals(str_replace("__SERIALIZED_CONTAINER__", serialize($container), $result), $launcherCode);
     }
 }
